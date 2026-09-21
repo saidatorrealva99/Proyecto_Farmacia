@@ -35,7 +35,7 @@ public class ejercicio03 {
     System.out.println("Primer semestre: " + semestre1);
     
     
-    System.out.print("Horas: ");
+    System.out.print("Horas2: ");
     double horas2 = input.nextDouble();
     
     System.out.print("Dias: ");
@@ -55,8 +55,8 @@ public class ejercicio03 {
     System.out.println("El empleado " +empleado+ " gana al año: " + anual);
 
     double AFP = (semestre1 + semestre2) * 0.11;
-    System.out.print("Aporte al año del " +empleado + " fue " +AFP);
-    
+    System.out.print("Aporte al año del " +empleado + " fue " +AFP);   
+
     }
     
 }

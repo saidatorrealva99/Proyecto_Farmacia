@@ -3,7 +3,7 @@ package practica01;
 import java.util.Scanner;
 
 public class ejercicio02 {
-
+   
     
     public static void main(String[] args) {
           String empleado;
