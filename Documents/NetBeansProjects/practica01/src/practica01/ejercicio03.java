@@ -55,7 +55,7 @@ public class ejercicio03 {
     System.out.println("El empleado " +empleado+ " gana al año: " + anual);
 
     double AFP = (semestre1 + semestre2) * 0.11;
-    System.out.print("Aporte al año del " +empleado + " fue " +AFP);   
+    System.out.println("Aporte al año del " +empleado + " fue " +AFP);   
 
     }
     
