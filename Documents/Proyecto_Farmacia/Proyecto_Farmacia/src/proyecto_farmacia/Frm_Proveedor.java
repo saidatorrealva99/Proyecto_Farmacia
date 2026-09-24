@@ -26,21 +26,258 @@ public class Frm_Proveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtcodigofacultad = new javax.swing.JTextField();
+        txtnombrefacultad = new javax.swing.JTextField();
+        BTN_VerFacultades = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTABLE_Mant_Facultades = new javax.swing.JTable();
+        BTN_Nuevo = new javax.swing.JButton();
+        BTN_Guardar = new javax.swing.JButton();
+        BTN_Modificar = new javax.swing.JButton();
+        BTN_Desactivar = new javax.swing.JButton();
+        BTN_EXCEL = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        TXT_BuscarFacultades = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        BTN_Cerrar1 = new javax.swing.JButton();
+        BTN_PDF = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("MANTENIMIENTO DE PROVEEDOR");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 240, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 0, 51), null));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Codigo Proveedor");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Nombre Proveedor");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        txtcodigofacultad.setEditable(false);
+        txtcodigofacultad.setBackground(new java.awt.Color(255, 255, 255));
+        txtcodigofacultad.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        txtcodigofacultad.setForeground(new java.awt.Color(0, 0, 204));
+        txtcodigofacultad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtcodigofacultad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(txtcodigofacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 330, 30));
+
+        txtnombrefacultad.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        txtnombrefacultad.setForeground(new java.awt.Color(0, 0, 204));
+        txtnombrefacultad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtnombrefacultad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtnombrefacultad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombrefacultadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtnombrefacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 59, 330, 30));
+
+        BTN_VerFacultades.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_VerFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.jpeg"))); // NOI18N
+        BTN_VerFacultades.setText("VER PROVEEDOR");
+        BTN_VerFacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VerFacultadesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BTN_VerFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 180, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 790, 120));
+
+        JTABLE_Mant_Facultades.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        JTABLE_Mant_Facultades.setForeground(new java.awt.Color(0, 0, 204));
+        JTABLE_Mant_Facultades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        JTABLE_Mant_Facultades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTABLE_Mant_FacultadesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JTABLE_Mant_Facultades);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 810, 220));
+
+        BTN_Nuevo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_Nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mas.png"))); // NOI18N
+        BTN_Nuevo.setText("NUEVO");
+        BTN_Nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_NuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, 50));
+
+        BTN_Guardar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Guardar (2).png"))); // NOI18N
+        BTN_Guardar.setText("GUARDAR");
+        BTN_Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTN_GuardarMouseClicked(evt);
+            }
+        });
+        BTN_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_GuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 190, 50));
+
+        BTN_Modificar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
+        BTN_Modificar.setText("MODIFICAR");
+        BTN_Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModificarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 200, 50));
+
+        BTN_Desactivar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_Desactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/suprimir.jpeg"))); // NOI18N
+        BTN_Desactivar.setText("DAR DE BAJA");
+        BTN_Desactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_DesactivarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Desactivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 180, 50));
+
+        BTN_EXCEL.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_EXCEL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excel.jpeg"))); // NOI18N
+        BTN_EXCEL.setText("Exportar");
+        BTN_EXCEL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EXCELActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_EXCEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 120, 40));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Ingresar el Nombre de la Proveedor");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+
+        TXT_BuscarFacultades.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TXT_BuscarFacultadesKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TXT_BuscarFacultadesKeyTyped(evt);
+            }
+        });
+        jPanel2.add(TXT_BuscarFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 290, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("BUSCAR");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 120, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 810, 50));
+
+        BTN_Cerrar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_Cerrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.jpeg"))); // NOI18N
+        BTN_Cerrar1.setText("Cerrar");
+        BTN_Cerrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_Cerrar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_Cerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, 130, 40));
+
+        BTN_PDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.jpeg"))); // NOI18N
+        BTN_PDF.setText("Exportar");
+        BTN_PDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PDFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTN_PDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 120, 40));
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtnombrefacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombrefacultadKeyTyped
+
+    }//GEN-LAST:event_txtnombrefacultadKeyTyped
+
+    private void BTN_VerFacultadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VerFacultadesActionPerformed
+
+    }//GEN-LAST:event_BTN_VerFacultadesActionPerformed
+
+    private void JTABLE_Mant_FacultadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTABLE_Mant_FacultadesMouseClicked
+
+    }//GEN-LAST:event_JTABLE_Mant_FacultadesMouseClicked
+
+    private void BTN_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_NuevoActionPerformed
+
+    }//GEN-LAST:event_BTN_NuevoActionPerformed
+
+    private void BTN_GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_GuardarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_GuardarMouseClicked
+
+    private void BTN_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_GuardarActionPerformed
+
+    }//GEN-LAST:event_BTN_GuardarActionPerformed
+
+    private void BTN_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModificarActionPerformed
+
+    }//GEN-LAST:event_BTN_ModificarActionPerformed
+
+    private void BTN_DesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DesactivarActionPerformed
+
+    }//GEN-LAST:event_BTN_DesactivarActionPerformed
+
+    private void BTN_EXCELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EXCELActionPerformed
+
+    }//GEN-LAST:event_BTN_EXCELActionPerformed
+
+    private void TXT_BuscarFacultadesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_BuscarFacultadesKeyReleased
+
+    }//GEN-LAST:event_TXT_BuscarFacultadesKeyReleased
+
+    private void TXT_BuscarFacultadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXT_BuscarFacultadesKeyTyped
+
+    }//GEN-LAST:event_TXT_BuscarFacultadesKeyTyped
+
+    private void BTN_Cerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_Cerrar1ActionPerformed
+
+    }//GEN-LAST:event_BTN_Cerrar1ActionPerformed
+
+    private void BTN_PDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PDFActionPerformed
+
+    }//GEN-LAST:event_BTN_PDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +315,26 @@ public class Frm_Proveedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Cerrar1;
+    private javax.swing.JButton BTN_Desactivar;
+    private javax.swing.JButton BTN_EXCEL;
+    private javax.swing.JButton BTN_Guardar;
+    private javax.swing.JButton BTN_Modificar;
+    private javax.swing.JButton BTN_Nuevo;
+    private javax.swing.JButton BTN_PDF;
+    private javax.swing.JButton BTN_VerFacultades;
+    private javax.swing.JTable JTABLE_Mant_Facultades;
+    private javax.swing.JTextField TXT_BuscarFacultades;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtcodigofacultad;
+    private javax.swing.JTextField txtnombrefacultad;
     // End of variables declaration//GEN-END:variables
 }

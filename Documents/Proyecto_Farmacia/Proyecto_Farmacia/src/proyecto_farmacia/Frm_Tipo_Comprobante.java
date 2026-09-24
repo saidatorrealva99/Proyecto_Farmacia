@@ -8,12 +8,12 @@ package proyecto_farmacia;
  *
  * @author Saida Torrealva
  */
-public class Frm_Sucursal extends javax.swing.JFrame {
+public class Frm_Tipo_Comprobante extends javax.swing.JFrame {
 
     /**
-     * Creates new form Frm_Sucursal
+     * Creates new form Frm_Tipo_Comprobante
      */
-    public Frm_Sucursal() {
+    public Frm_Tipo_Comprobante() {
         initComponents();
     }
 
@@ -52,19 +52,19 @@ public class Frm_Sucursal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("MANTENIMIENTO DE SUCURSAL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 240, 30));
+        jLabel1.setText("TIPO_COMBROBANTE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 150, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 0, 51), null));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Codigo Sucursal");
+        jLabel2.setText("Codigo  Tipo_Comprobante");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Nombre Sucursal");
+        jLabel3.setText("Nombre Tipo_Comprobante");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         txtcodigofacultad.setEditable(false);
@@ -73,7 +73,7 @@ public class Frm_Sucursal extends javax.swing.JFrame {
         txtcodigofacultad.setForeground(new java.awt.Color(0, 0, 204));
         txtcodigofacultad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtcodigofacultad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(txtcodigofacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 330, 30));
+        jPanel1.add(txtcodigofacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 330, 30));
 
         txtnombrefacultad.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         txtnombrefacultad.setForeground(new java.awt.Color(0, 0, 204));
@@ -84,17 +84,17 @@ public class Frm_Sucursal extends javax.swing.JFrame {
                 txtnombrefacultadKeyTyped(evt);
             }
         });
-        jPanel1.add(txtnombrefacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 59, 330, 30));
+        jPanel1.add(txtnombrefacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 330, 30));
 
         BTN_VerFacultades.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BTN_VerFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.jpeg"))); // NOI18N
-        BTN_VerFacultades.setText("VER SUCURSAL");
+        BTN_VerFacultades.setText("VER TIPO_COMPROBANTE");
         BTN_VerFacultades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VerFacultadesActionPerformed(evt);
             }
         });
-        jPanel1.add(BTN_VerFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 180, 50));
+        jPanel1.add(BTN_VerFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 200, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 790, 120));
 
@@ -181,8 +181,8 @@ public class Frm_Sucursal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Ingresar el Nombre de la Sucursal");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+        jLabel4.setText("Ingresar el Nombre de la Tipo_Comprobante");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
 
         TXT_BuscarFacultades.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -223,7 +223,7 @@ public class Frm_Sucursal extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 560));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -297,20 +297,20 @@ public class Frm_Sucursal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Tipo_Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Tipo_Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Tipo_Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Tipo_Comprobante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Sucursal().setVisible(true);
+                new Frm_Tipo_Comprobante().setVisible(true);
             }
         });
     }

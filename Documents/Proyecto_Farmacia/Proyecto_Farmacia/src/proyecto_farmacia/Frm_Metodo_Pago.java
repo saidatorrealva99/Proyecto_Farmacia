@@ -8,12 +8,12 @@ package proyecto_farmacia;
  *
  * @author Saida Torrealva
  */
-public class Frm_Sucursal extends javax.swing.JFrame {
+public class Frm_Metodo_Pago extends javax.swing.JFrame {
 
     /**
-     * Creates new form Frm_Sucursal
+     * Creates new form Frm_Metodo_Pago
      */
-    public Frm_Sucursal() {
+    public Frm_Metodo_Pago() {
         initComponents();
     }
 
@@ -52,7 +52,7 @@ public class Frm_Sucursal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("MANTENIMIENTO DE SUCURSAL");
+        jLabel1.setText("METODO_PAGO");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 240, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -60,11 +60,11 @@ public class Frm_Sucursal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Codigo Sucursal");
+        jLabel2.setText("Codigo Metodo_Pago");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Nombre Sucursal");
+        jLabel3.setText("Nombre Metodo_Pago");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         txtcodigofacultad.setEditable(false);
@@ -88,7 +88,7 @@ public class Frm_Sucursal extends javax.swing.JFrame {
 
         BTN_VerFacultades.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BTN_VerFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hoja.jpeg"))); // NOI18N
-        BTN_VerFacultades.setText("VER SUCURSAL");
+        BTN_VerFacultades.setText("VER METODO_PAGO");
         BTN_VerFacultades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VerFacultadesActionPerformed(evt);
@@ -181,8 +181,8 @@ public class Frm_Sucursal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Ingresar el Nombre de la Sucursal");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
+        jLabel4.setText("Ingresar el Nombre del Metodo_Pago");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
         TXT_BuscarFacultades.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -223,7 +223,7 @@ public class Frm_Sucursal extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 560));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -297,20 +297,20 @@ public class Frm_Sucursal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Metodo_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Metodo_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Metodo_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frm_Sucursal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frm_Metodo_Pago.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Sucursal().setVisible(true);
+                new Frm_Metodo_Pago().setVisible(true);
             }
         });
     }
