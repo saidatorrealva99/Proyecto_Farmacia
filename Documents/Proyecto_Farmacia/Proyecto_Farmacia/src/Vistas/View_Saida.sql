@@ -1259,3 +1259,169 @@ END $$
 
 DELIMITER ;
 
+
+/*===============================================================================*/
+-- ============================================================
+    --REPORTES Y ANALISIS
+    -- ============================================================
+
+    --Reporte 1: Análisis y Control del Estado del Stock en Inventario
+    --Objetivo de negocio: Evaluar el nivel de inventario por producto y sucursal categorizando el estado del stock (Crítico, Bajo, Adecuado o Excedente) 
+    --para la toma de decisiones logísticas y de reabastecimiento.
+    CREATE OR REPLACE VIEW Vista_Analisis_Stock_Inventario AS
+    SELECT 
+        S.nombre_sucursal,
+        P.nombre_comercial,
+        P.principio_activo,
+        I.stock_actual,
+        I.stock_minimo,
+        I.stock_maximo,
+        CASE 
+            WHEN I.stock_actual = 0 THEN 'AGOTADO'
+            WHEN I.stock_actual <= I.stock_minimo THEN 'STOCK BAJO'
+            WHEN I.stock_actual > I.stock_maximo THEN 'STOCK EXCEDENTE'
+            ELSE 'STOCK NORMAL'
+        END AS estado_stock
+    FROM inventario I
+    INNER JOIN sucursal S ON I.id_sucursal = S.id_sucursal
+    INNER JOIN lote L ON I.id_lote = L.id_lote
+    INNER JOIN producto P ON L.id_producto = P.id_producto
+    WHERE P.estado = 1;
+
+    /*CONSULTA DE LA VISTA*/
+    SELECT * FROM Vista_Analisis_Stock_Inventario
+    ORDER BY nombre_sucursal, estado_stock;
+
+
+    --Reporte 2: Monitoreo de Lotes Próximos a Vencer (Control de Caducidad)
+    --Objetivo de negocio: Detectar oportunamente los medicamentos cuyos lotes están próximos a vencer o ya se encuentran vencidos, 
+    --clasificando la urgencia comercial para aplicar estrategias de rotación o merma.
+    CREATE OR REPLACE VIEW Vista_Analisis_Vencimiento_Lotes AS
+    SELECT 
+        P.nombre_comercial,
+        P.concentracion,
+        L.numero_lote,
+        L.fecha_vencimiento,
+        S.nombre_sucursal,
+        I.stock_actual,
+        CASE 
+            WHEN L.fecha_vencimiento < CURRENT_DATE THEN 'VENCIDO'
+            WHEN L.fecha_vencimiento <= (CURRENT_DATE + 30) THEN 'VENCE EN 30 DIAS (CRITICO)'
+            WHEN L.fecha_vencimiento <= (CURRENT_DATE + 90) THEN 'VENCE EN 90 DIAS (ATENCION)'
+            ELSE 'VIGENTE'
+        END AS alerta_vencimiento
+    FROM lote L
+    INNER JOIN producto P ON L.id_producto = P.id_producto
+    INNER JOIN inventario I ON L.id_lote = I.id_lote
+    INNER JOIN sucursal S ON I.id_sucursal = S.id_sucursal
+    WHERE P.estado = 1 AND I.stock_actual > 0;
+
+    /*CONSULTA DE LA VISTA*/
+    SELECT * FROM Vista_Analisis_Vencimiento_Lotes
+    ORDER BY fecha_vencimiento ASC;
+
+
+    --Reporte 3: Ranking de Rentabilidad y Ganancia por Producto
+    --Objetivo de negocio: Analizar el margen de ganancia unitario y porcentual de los productos activos comercializados, 
+    --ayudando al área de marketing y compras a identificar los productos más rentables.
+    CREATE OR REPLACE VIEW Vista_Analisis_Rentabilidad_Productos AS
+    SELECT
+        P.nombre_comercial,
+        LAB.nombre_laboratorio,
+        P.precio_costo,
+        P.precio_venta,
+        (P.precio_venta - P.precio_costo) AS ganancia_unitaria,
+
+        CASE
+            WHEN P.precio_costo = 0 THEN NULL
+            ELSE ROUND(
+                ((P.precio_venta - P.precio_costo)
+                / P.precio_costo) * 100,
+                2
+            )
+        END AS margen_porcentual,
+
+        CASE
+            WHEN P.precio_costo <= 0 THEN 'NO CALCULABLE'
+            WHEN ((P.precio_venta - P.precio_costo)
+                / P.precio_costo) * 100 >= 50
+                THEN 'ALTA RENTABILIDAD'
+            WHEN ((P.precio_venta - P.precio_costo)
+                / P.precio_costo) * 100 >= 20
+                THEN 'RENTABILIDAD MODERADA'
+            ELSE 'BAJA RENTABILIDAD'
+        END AS clasificacion_rentabilidad
+
+    FROM producto P
+    INNER JOIN laboratorio LAB
+        ON P.id_laboratorio = LAB.id_laboratorio
+    WHERE P.estado = 1;
+
+    /*CONSULTA DE LA VISTA*/
+    SELECT * FROM Vista_Analisis_Rentabilidad_Productos
+    ORDER BY ganancia_unitaria DESC;
+
+
+    --Reporte 4: Consolidado de Ventas y Comportamiento Comercial por Sucursal
+    --Objetivo de negocio: Evaluar el volumen total de transacciones de venta, el dinero recaudado y el rendimiento general 
+    --por cada sucursal de la cadena farmacéutica.
+    CREATE OR REPLACE VIEW Vista_Analisis_Ventas_Sucursal AS
+    SELECT
+        S.nombre_sucursal,
+        S.direccion,
+        COUNT(V.id_venta) AS total_transacciones_pagadas,
+        COALESCE(SUM(V.total_venta), 0) AS recaudacion_total,
+        ROUND(AVG(V.total_venta), 2) AS ticket_promedio_venta
+    FROM venta V
+    INNER JOIN sucursal S
+        ON V.id_sucursal = S.id_sucursal
+    WHERE V.estado = 'PAGADA'
+    GROUP BY
+        S.id_sucursal,
+        S.nombre_sucursal,
+        S.direccion;
+
+    /*CONSULTA DE LA VISTA*/
+    SELECT * FROM Vista_Analisis_Ventas_Sucursal
+    ORDER BY recaudacion_total DESC;
+
+    --Reporte 5: Auditoría de Prescripciones Médicas por Especialidad/Personal
+    --Objetivo de negocio: Analizar qué tipos de diagnósticos y qué cantidad de productos farmacéuticos se están recetando a 
+    --través del personal emisor, vinculando la atención médica con las ventas de la farmacia.
+    CREATE OR REPLACE VIEW Vista_Analisis_Recetas_Prescritas AS
+    SELECT
+        CONCAT(PER.nombres, ' ', PER.apellidos)
+            AS nombres_personal_emisor,
+        A.nombre_area AS area_personal,
+        R.diagnostico,
+        COUNT(DISTINCT DR.id_producto)
+            AS cantidad_medicamentos_diferentes_recetados,
+        SUM(DR.cantidad_prescrita)
+            AS unidades_totales_prescritas,
+        R.fecha_emision
+    FROM receta R
+    INNER JOIN personal PER
+        ON R.id_personal = PER.id_personal
+    INNER JOIN area A
+        ON PER.id_area = A.id_area
+    INNER JOIN detalle_receta DR
+        ON R.id_receta = DR.id_receta
+    GROUP BY
+        PER.id_personal,
+        PER.nombres,
+        PER.apellidos,
+        A.nombre_area,
+        R.diagnostico,
+        R.fecha_emision;
+
+    /*CONSULTA DE LA VISTA*/
+    SELECT * FROM Vista_Analisis_Recetas_Prescritas
+    ORDER BY fecha_emision DESC;
+
+
+
+
+
+
+
+
